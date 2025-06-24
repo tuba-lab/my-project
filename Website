@@ -68,21 +68,31 @@ const responsiveStyle = `
   }
 `;
 
+// AMU Themed Colors
+const amuColors = {
+  primary: "#004d40",
+  accent: "#FFD700",
+  text: "#004d40",
+  background: "#f5f5f0",
+};
+
 // Styles
 const styles = {
   container: {
     fontFamily: "Arial, sans-serif",
-    backgroundColor: "#f5f5f0",
-    color: "#00563F",
-    padding: "10px",
+    backgroundColor: amuColors.background,
+    color: amuColors.text,
+    padding: "20px",
   },
   header: {
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "space-between",
     alignItems: "center",
-    borderBottom: "3px solid #00563F",
-    paddingBottom: "10px",
+    borderBottom: `4px solid ${amuColors.primary}`,
+    borderRadius: "10px",
+    backgroundColor: "#ffffff",
+    padding: "15px 10px",
   },
   logoTitle: {
     display: "flex",
@@ -90,21 +100,23 @@ const styles = {
     gap: "10px",
   },
   logo: {
-    height: "40px",
-    width: "40px",
+    height: "50px",
+    width: "50px",
     objectFit: "contain",
   },
   title: {
-    fontSize: "1.5em",
+    fontSize: "1.6em",
     margin: 0,
+    color: amuColors.text,
   },
   nav: {
     display: "flex",
-    gap: "12px",
+    gap: "14px",
   },
   navLink: {
-    color: "#00563F",
+    color: amuColors.text,
     textDecoration: "none",
+    fontWeight: "bold",
   },
   hero: {
     display: "flex",
@@ -113,6 +125,9 @@ const styles = {
     alignItems: "center",
     gap: "20px",
     margin: "40px 0",
+    backgroundColor: "#e0e0d1",
+    padding: "20px",
+    borderRadius: "10px",
   },
   heroText: {
     flex: "1 1 300px",
@@ -122,23 +137,29 @@ const styles = {
     borderRadius: "8px",
   },
   primaryButton: {
-    backgroundColor: "#00563F",
+    backgroundColor: amuColors.primary,
     color: "#fff",
     padding: "10px 20px",
     border: "none",
     marginRight: "10px",
+    borderRadius: "5px",
   },
   secondaryButton: {
-    backgroundColor: "#FFD700",
-    color: "#00563F",
+    backgroundColor: amuColors.accent,
+    color: amuColors.primary,
     padding: "10px 20px",
     border: "none",
+    borderRadius: "5px",
   },
   stats: {
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "space-around",
+    backgroundColor: "#e0f2f1",
+    padding: "30px 10px",
+    borderRadius: "10px",
     marginBottom: "30px",
+    boxShadow: "0 2px 5px rgba(0,0,0,0.1)",
   },
   statBox: {
     textAlign: "center",
@@ -146,11 +167,15 @@ const styles = {
     margin: "10px",
   },
   statValue: {
-    color: "#FFD700",
+    color: amuColors.accent,
     fontSize: "1.8em",
+    fontWeight: "bold",
   },
   section: {
     margin: "40px 0",
+    backgroundColor: "#ffffff",
+    padding: "20px",
+    borderRadius: "10px",
   },
   programGrid: {
     display: "flex",
@@ -159,12 +184,13 @@ const styles = {
     justifyContent: "center",
   },
   card: {
-    backgroundColor: "#fff",
+    backgroundColor: "#e0f2f1",
     padding: "15px",
     borderRadius: "10px",
     flex: "1 1 250px",
     boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
     textAlign: "center",
+    border: "1px solid #ddd",
   },
   cardImage: {
     width: "100%",
@@ -183,11 +209,12 @@ const styles = {
     flex: "1 1 250px",
     textAlign: "center",
     textDecoration: "none",
-    backgroundColor: "#fff",
+    backgroundColor: "#e0f2f1",
     padding: "15px",
     borderRadius: "10px",
     boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-    color: "#00563F",
+    color: amuColors.text,
+    border: "1px solid #ddd",
   },
   facultyImg: {
     width: "120px",
@@ -203,21 +230,13 @@ const styles = {
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "space-around",
-  },
-  footerSection: {
-    margin: "10px",
-    minWidth: "150px",
-  },
-  footerLink: {
-    display: "block",
-    color: "#00563F",
-    textDecoration: "none",
-    marginTop: "6px",
-    fontWeight: "bold",
+    borderTop: `2px solid ${amuColors.primary}`,
   },
   page: {
     padding: "20px",
     fontFamily: "Arial",
+    backgroundColor: "#ffffff",
+    borderRadius: "10px",
   },
   profileImage: {
     width: "200px",
@@ -228,7 +247,7 @@ const styles = {
   link: {
     display: "inline-block",
     marginTop: "20px",
-    color: "#00563F",
+    color: amuColors.primary,
     textDecoration: "none",
     fontWeight: "bold",
   },
@@ -245,40 +264,7 @@ const styles = {
   },
 };
 
-// ImportantLinks Component
-const ImportantLinks = () => {
-  const links = [
-    { name: "Admissions", url: "https://www.amu.ac.in/admissions" },
-    { name: "Library", url: "https://www.amu.ac.in/library" },
-    { name: "Examinations", url: "https://www.amu.ac.in/examinations" },
-    { name: "Alumni", url: "https://www.amu.ac.in/alumni" },
-    { name: "Contact Us", url: "https://www.amu.ac.in/contact" },
-  ];
-
-  return (
-    <div style={styles.page}>
-      <h2>Important Links</h2>
-      <ul>
-        {links.map((link, i) => (
-          <li key={i} style={{ marginBottom: "10px" }}>
-            <a
-              href={link.url}
-              target="_blank"
-              rel="noreferrer"
-              style={{ color: "#00563F" }}
-            >
-              {link.name}
-            </a>
-          </li>
-        ))}
-      </ul>
-      <Link to="/" style={styles.link}>
-        ← Back to Home
-      </Link>
-    </div>
-  );
-};
-
+// Pages
 const FacultyProfile = () => {
   const { profileId } = useParams();
   return (
@@ -330,16 +316,105 @@ const Research = () => (
     </Link>
   </div>
 );
+// Notification Banner Component
+const NotificationBanner = () => {
+  return (
+    <div
+      style={{
+        overflow: "hidden",
+        whiteSpace: "nowrap",
+        position: "relative",
+        backgroundColor: "#fff",
+        padding: "12px 20px",
+        marginTop: "10px",
+        marginBottom: "20px",
+        boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+        borderRadius: "10px",
+        maxWidth: "95%",
+        marginLeft: "auto",
+        marginRight: "auto",
+      }}
+    >
+      <div
+        style={{
+          display: "inline-block",
+          animation: "floatText 12s linear infinite",
+        }}
+      >
+        <a
+          href="https://www.amu.ac.in/results/msc-cs-df-2025.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            textDecoration: "none",
+            color: "#004d40",
+            fontWeight: "bold",
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "10px",
+          }}
+        >
+          <span>
+            📢 Result of Selected Candidates of M.Sc. (CS & DF) Admission Test
+            2025–26
+          </span>
+        </a>
+      </div>
+    </div>
+  );
+};
 
+// Home Page
 const Home = () => {
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
+  const [currentSlide, setCurrentSlide] = useState(0);
 
+  const slides = [
+    "https://www.theindianwire.com/wp-content/uploads/2018/12/amu_647_071216044335.jpg",
+    "https://i.ytimg.com/vi/C3qYgvsBARU/hq720.jpg?sqp=-oaymwE7CK4FEIIDSFryq4qpAy0IARUAAAAAGAElAADIQj0AgKJD8AEB-AHUBoAC4AOKAgwIABABGGUgZShlMA8=&rs=AOn4CLD6a9r6vP4SbNPasBdGdPJaoQrUNA",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQU6Y5hIOimQK9P1KosTcccNZWPm5YAxtkyTw&s",
+  ];
   useEffect(() => {
     const style = document.createElement("style");
-    style.innerHTML = responsiveStyle;
+    style.innerHTML = `
+      ${responsiveStyle}
+  
+      @keyframes floatText {
+        0% { transform: translateX(100%); }
+        100% { transform: translateX(-100%); }
+      }
+  
+      /* Responsive Notification Banner Styles */
+      @media (max-width: 768px) {
+        .notification-banner a {
+          font-size: 0.9rem !important;
+          gap: 6px !important;
+          flex-direction: column !important;
+          text-align: center !important;
+        }
+        .notification-banner {
+          padding: 8px 12px !important;
+        }
+      }
+  
+      @media (max-width: 480px) {
+        .notification-banner a {
+          font-size: 0.8rem !important;
+        }
+      }
+    `;
+
     document.head.appendChild(style);
-    return () => document.head.removeChild(style);
+
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 4000);
+
+    return () => {
+      clearInterval(interval);
+      document.head.removeChild(style);
+    };
   }, []);
 
   const facultyList = [
@@ -391,6 +466,12 @@ const Home = () => {
       designation: "Assistant Professor ",
       img: "https://api.amu.ac.in/storage/images/empphoto/10061777.jpg",
     },
+    {
+      id: 9,
+      name: "Dr. Mohammad Nadeem",
+      designation: "Assistant Professor ",
+      img: "https://api.amu.ac.in/storage/images/empphoto/10061777.jpg",
+    },
   ];
 
   const filteredFaculty = facultyList.filter((f) =>
@@ -398,7 +479,30 @@ const Home = () => {
   );
 
   return (
-    <div style={styles.container}>
+    <div
+      style={{ ...styles.container, position: "relative", overflow: "hidden" }}
+    >
+      {/* Slideshow background */}
+      {slides.map((src, index) => (
+        <div
+          key={index}
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100vh",
+            backgroundImage: `url(${src})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            opacity: currentSlide === index ? 0.25 : 0,
+            transition: "opacity 1s ease-in-out",
+            zIndex: -1,
+          }}
+        />
+      ))}
+
+      {/* Header */}
       <header style={styles.header}>
         <div style={styles.logoTitle}>
           <img
@@ -421,38 +525,138 @@ const Home = () => {
           <Link to="/research" style={styles.navLink}>
             Research
           </Link>
-          <Link to="/important-links" style={styles.navLink}>
-            Important Links
-          </Link>
         </nav>
       </header>
 
-      <section className="hero" style={styles.hero}>
-        <div style={styles.heroText}>
-          <h2>Excellence in Computer Science Education</h2>
-          <p>Pioneering innovation and research in a premier institution.</p>
-          <div style={{ marginTop: "10px" }}>
+      <NotificationBanner />
+
+      {/* Hero Section */}
+      <section
+        className="hero"
+        style={{
+          position: "relative",
+          width: "100%",
+          aspectRatio: "16/9",
+          overflow: "hidden",
+          marginBottom: "40px",
+          borderRadius: "10px",
+          maxHeight: "500px",
+        }}
+      >
+        {/* Slideshow Image */}
+        <img
+          src={slides[currentSlide]}
+          alt={`Slide ${currentSlide + 1}`}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            position: "absolute",
+            top: 0,
+            left: 0,
+            zIndex: 0,
+            transition: "opacity 1s ease-in-out",
+          }}
+        />
+
+        {/* Overlay Text and Buttons */}
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            background: "rgba(0, 0, 0, 0.4)",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            color: "#fff",
+            padding: "5vw",
+            zIndex: 1,
+            textAlign: "center",
+          }}
+        >
+          <h2
+            style={{
+              fontSize: "2.2em",
+              marginBottom: "10px",
+            }}
+          >
+            Excellence in Computer Science Education
+          </h2>
+          <p
+            style={{
+              fontSize: "1.1em",
+              marginBottom: "20px",
+              maxWidth: "700px",
+            }}
+          >
+            Pioneering innovation and research in a premier institution.
+          </p>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "10px",
+              justifyContent: "center",
+            }}
+          >
             <button
-              style={styles.primaryButton}
+              style={{
+                ...styles.primaryButton,
+                backgroundColor: "#004d40",
+                fontSize: "1em",
+              }}
               onClick={() => (window.location.hash = "#programs")}
             >
               Explore Programs
             </button>
             <button
-              style={styles.secondaryButton}
+              style={{
+                ...styles.secondaryButton,
+                backgroundColor: "#FFD700",
+                color: "#004d40",
+                fontSize: "1em",
+              }}
               onClick={() => navigate("/learn-more")}
             >
               Learn More
             </button>
           </div>
         </div>
-        <img
-          src="https://i.pinimg.com/736x/64/2c/45/642c45c04ee2c5f0420ffe8685b09fe6.jpg"
-          alt="Campus"
-          style={styles.heroImage}
-        />
+
+        {/* Dots */}
+        <div
+          style={{
+            position: "absolute",
+            bottom: "15px",
+            left: "50%",
+            transform: "translateX(-50%)",
+            display: "flex",
+            gap: "8px",
+            zIndex: 2,
+          }}
+        >
+          {slides.map((_, index) => (
+            <span
+              key={index}
+              onClick={() => setCurrentSlide(index)}
+              style={{
+                width: "8px",
+                height: "8px",
+                borderRadius: "50%",
+                backgroundColor: currentSlide === index ? "#ccc" : "#fff",
+                cursor: "pointer",
+                transition: "background-color 0.3s",
+              }}
+            />
+          ))}
+        </div>
       </section>
 
+      {/* Stats Section */}
       <section style={styles.stats}>
         {[
           { label: "Students", value: "500+" },
@@ -467,10 +671,67 @@ const Home = () => {
         ))}
       </section>
 
+      {/* SWAYAM Courses Section */}
+      <section id="swayam" style={styles.section}>
+        <h2 style={{ textAlign: "center", color: amuColors.text }}>
+          SWAYAM Courses
+        </h2>
+        <p style={{ textAlign: "center", marginBottom: "20px" }}>
+          Enhance your learning with MOOCs from the Government of India’s SWAYAM
+          platform.
+        </p>
+        <div className="programGrid" style={styles.programGrid}>
+          {[
+            {
+              title: "AI & Machine Learning",
+              instructor: "Prof. Raghunathan, IIT Madras",
+              link: "https://swayam.gov.in/ai-course",
+            },
+            {
+              title: "Cybersecurity Fundamentals",
+              instructor: "Dr. Mehta, IGNOU",
+              link: "https://swayam.gov.in/cyber-course",
+            },
+            {
+              title: "Data Structures in C++",
+              instructor: "Prof. Patil, NPTEL",
+              link: "https://swayam.gov.in/ds-course",
+            },
+          ].map((course, index) => (
+            <a
+              key={index}
+              href={course.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                ...styles.card,
+                textDecoration: "none",
+                color: amuColors.primary,
+              }}
+            >
+              <img
+                src="https://i.pinimg.com/736x/cb/cb/74/cbcb74d7c06b56b3249ef31f5aa9e6a2.jpg"
+                alt={course.title}
+                style={styles.cardImage}
+              />
+              <h3>{course.title}</h3>
+              <p style={{ fontSize: "0.9em" }}>
+                <strong>Instructor:</strong> {course.instructor}
+              </p>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      {/* Academic Programs */}
       <section id="programs" style={styles.section}>
         <Link to="/program-details" style={{ textDecoration: "none" }}>
           <h2
-            style={{ textAlign: "center", color: "#004d40", cursor: "pointer" }}
+            style={{
+              textAlign: "center",
+              color: amuColors.text,
+              cursor: "pointer",
+            }}
           >
             Academic Programs
           </h2>
@@ -484,19 +745,16 @@ const Home = () => {
               title: "B.Tech",
               desc: "Undergraduate in Computer Engineering",
               years: "4 Years",
-              img: "https://i.pinimg.com/736x/42/d7/56/42d7565979b75f36a47dc73610906151.jpg",
             },
             {
               title: "M.Tech",
               desc: "Postgraduate in Advanced Computing",
               years: "2 Years",
-              img: "https://i.pinimg.com/736x/42/d7/56/42d7565979b75f36a47dc73610906151.jpg",
             },
             {
               title: "Ph.D.",
               desc: "Doctoral Research Program",
-              years: "3-5 Years",
-              img: "https://i.pinimg.com/736x/42/d7/56/42d7565979b75f36a47dc73610906151.jpg",
+              years: "3–5 Years",
             },
           ].map((prog, i) => (
             <Link
@@ -505,10 +763,14 @@ const Home = () => {
               style={{
                 ...styles.card,
                 textDecoration: "none",
-                color: "#00563F",
+                color: amuColors.primary,
               }}
             >
-              <img src={prog.img} alt={prog.title} style={styles.cardImage} />
+              <img
+                src="https://i.pinimg.com/736x/42/d7/56/42d7565979b75f36a47dc73610906151.jpg"
+                alt={prog.title}
+                style={styles.cardImage}
+              />
               <h3>{prog.title}</h3>
               <p>{prog.desc}</p>
               <small>
@@ -519,8 +781,9 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Faculty Section */}
       <section id="faculty" style={styles.section}>
-        <h2 style={{ textAlign: "center", color: "#004d40" }}>
+        <h2 style={{ textAlign: "center", color: amuColors.text }}>
           Meet Our Faculty
         </h2>
         <p style={{ textAlign: "center" }}>
@@ -548,6 +811,7 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Footer */}
       <footer className="footer" id="contact" style={styles.footer}>
         {[
           { title: "News", content: "Updates and bulletins" },
@@ -556,52 +820,9 @@ const Home = () => {
           { title: "Links", content: "Admissions, Library" },
           { title: "Social", content: "🔗 Facebook | Twitter" },
         ].map((item, i) => (
-          <div key={i} style={styles.footerSection}>
+          <div key={i} style={{ margin: "10px" }}>
             <h4>{item.title}</h4>
             <p>{item.content}</p>
-
-            {item.title === "Links" ? (
-              <>
-                <a
-                  href="https://www.amu.ac.in/admissions"
-                  target="_blank"
-                  rel="noreferrer"
-                  style={styles.footerLink}
-                >
-                  Admissions
-                </a>
-                <a
-                  href="https://www.amu.ac.in/library"
-                  target="_blank"
-                  rel="noreferrer"
-                  style={styles.footerLink}
-                >
-                  Library
-                </a>
-              </>
-            ) : item.title === "Social" ? (
-              <p>
-                <a
-                  href="https://facebook.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  style={styles.footerLink}
-                >
-                  Facebook
-                </a>
-                {" | "}
-                <a
-                  href="https://twitter.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  style={styles.footerLink}
-                >
-                  Twitter
-                </a>
-              </p>
-            ) : (
-              <p>{item.content}</p>
-            )}
           </div>
         ))}
       </footer>
@@ -609,17 +830,17 @@ const Home = () => {
   );
 };
 
-export default function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/faculty/:profileId" element={<FacultyProfile />} />
-        <Route path="/program-details" element={<ProgramDetails />} />
-        <Route path="/learn-more" element={<LearnMore />} />
-        <Route path="/research" element={<Research />} />
-        <Route path="/important-links" element={<ImportantLinks />} />
-      </Routes>
-    </Router>
-  );
-}
+// App Router
+const App = () => (
+  <Router>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/faculty/:profileId" element={<FacultyProfile />} />
+      <Route path="/program-details" element={<ProgramDetails />} />
+      <Route path="/learn-more" element={<LearnMore />} />
+      <Route path="/research" element={<Research />} />
+    </Routes>
+  </Router>
+);
+
+export default App;
